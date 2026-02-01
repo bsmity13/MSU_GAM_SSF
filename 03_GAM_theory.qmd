@@ -1,0 +1,41 @@
+---
+title: "Generalized Additive Models"
+author: "Brian J. Smith"
+date: "11 February 2026"
+format: 
+  revealjs:
+    theme: default
+    mermaid: 
+      theme: forest
+editor: source
+---
+
+## Basis Expansions
+
+Content
+
+## Cubic Splines
+
+Content
+
+## Penalizing Complexity
+
+Content
+
+## Placing Knots
+
+Content
+
+## Basis Choices
+
+### Cubic Splines
+
+### TPRS
+
+### Circular Cubic Splines
+
+### Random Effects
+
+## Further Reading
+
+Content

@@ -1,0 +1,11 @@
+project:
+  output-dir: docs
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+  revealjs: 
+    menu: true
+    progress: true

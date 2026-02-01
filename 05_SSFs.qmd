@@ -1,0 +1,35 @@
+---
+title: "Habitat Selection Models"
+author: "Brian J. Smith"
+date: "13 February 2026"
+format: 
+  revealjs:
+    theme: default
+    mermaid: 
+      theme: forest
+editor: source
+---
+
+## Habitat Selection
+
+Content
+
+## RSFs
+
+Content
+
+## SSFs
+
+Content
+
+## iSSFs
+
+Content
+
+## Interpreting SSFs
+
+Content
+
+## Scaling up SSFs
+
+Content

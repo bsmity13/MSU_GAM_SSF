@@ -1,0 +1,31 @@
+---
+title: "SSFs with GAMs"
+author: "Brian J. Smith"
+date: "13 February 2026"
+format: 
+  revealjs:
+    theme: default
+    mermaid: 
+      theme: forest
+editor: source
+---
+
+## Problem Statement
+
+Content
+
+## Non-linear Selection
+
+Content
+
+## Time-varying Selection
+
+Content
+
+## Random Slopes
+
+Content
+
+## Spatial Random Effects
+
+Content

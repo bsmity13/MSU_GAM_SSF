@@ -1,0 +1,31 @@
+---
+title: "Regression Modeling"
+author: "Brian J. Smith"
+date: "11 February 2026"
+format: 
+  revealjs:
+    theme: default
+    mermaid: 
+      theme: forest
+editor: source
+---
+
+## Ordinary Linear Regression
+
+Content
+
+## Common Statistical Tests as Linear Regression
+
+Content
+
+## Generalized Linear Models
+
+Content
+
+## Generalized Linear Mixed Models
+
+Content
+
+## Generalized Additive Models
+
+Content

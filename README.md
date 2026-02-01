@@ -3,9 +3,13 @@
 [Brian J. Smith](https://github.com/bsmity13)
 
 Montana State University
+
 February 11 & 13, 2026
 
-This workshop covers general applications of **generalized additive models** (GAMs) in ecology, an introduction to **step-selection functions** (SSFs) for modeling animal movement, and then concludes by fitting SSFs using the flexibility of GAMs.
+This workshop covers general applications of **generalized additive models** 
+(GAMs) in ecology, an introduction to **step-selection functions** (SSFs) for 
+modeling animal movement, and then concludes by fitting SSFs using the 
+flexibility of GAMs.
 
 ## Recommended Resources
 
@@ -40,4 +44,20 @@ On campus all day
 
 ## Repository Structure
 
-TBD
+### Slides 
+
+Slides in this repository were created with [Quarto](https://quarto.org/) using 
+[`revealjs`](https://quarto.org/docs/presentations/revealjs/). The slideshows 
+are written in a `*.qmd` file, then rendered to HTML for presentation. The 
+`*.qmd` files are located in the root directory, while the HTML files are 
+rendered inside the `docs/` folder.
+
+### Code
+
+The code walkthroughs are plain R scripts, located in the root directory.
+
+### Numbering
+
+The lecture and code walkthrough files are numbered in the order we will cover 
+them in the workshop. Day 1 covers `01_*` through `04_*`, Day 2 covers `05_*` 
+through `08_*`.
