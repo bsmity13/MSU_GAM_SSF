@@ -6,8 +6,11 @@
 <script src="01_regression_lecture_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="01_regression_lecture_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="01_regression_lecture_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="01_regression_lecture_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.25">
+<link href="01_regression_lecture_files/libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="01_regression_lecture_files/libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="01_regression_lecture_files/libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="01_regression_lecture_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.27">
 
   <meta name="author" content="Brian J. Smith">
   <meta name="dcterms.date" content="2026-02-11">
@@ -29,6 +32,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="01_regression_lecture_files/libs/revealjs/dist/theme/quarto-534cd8e3a96973385dffff3f4709048d.css">
   <link href="01_regression_lecture_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -140,25 +209,645 @@ Brian J. Smith
 
   <p class="date">2026-02-11</p>
 </section>
-<section id="ordinary-linear-regression" class="slide level2">
-<h2>Ordinary Linear Regression</h2>
-<p>Content</p>
+<section id="outline" class="slide level2">
+<h2>Outline</h2>
+<ul>
+<li>Probability</li>
+<li>Estimation</li>
+<li>Ordinary Linear Regression</li>
+<li>Generalized Linear Models</li>
+<li>Generalized Linear Mixed Models</li>
+<li>Generalized Additive Models</li>
+</ul>
 </section>
+<section>
+<section id="probability" class="title-slide slide level1 center">
+<h1>Probability</h1>
+
+</section>
+<section id="coin-flips" class="slide level2">
+<h2>Coin Flips</h2>
+<div class="columns">
+<div class="column">
+<p>Assuming a fair coin, what’s the probability of flipping:</p>
+<p><br></p>
+<center>
+<u>H</u> <u>H</u> <u>T</u> ?
+</center>
+</div><div class="column">
+<p><img data-src="img/wikipedia_coin-toss.jpg" style="width:75.0%" alt="A hand flipping a coin"><br>
+</p>
+</div></div>
+</section>
+<section id="coin-flips-1" class="slide level2">
+<h2>Coin Flips</h2>
+<div class="columns">
+<div class="column">
+<p>Assuming a fair coin, what’s the probability of flipping:</p>
+<p><br></p>
+<center>
+<p><u>H</u> <u>H</u> <u>T</u> ?</p>
+<p><span class="math display">\[0.5 \times 0.5 \times (1-0.5)\]</span></p>
+<p><span class="math display">\[ = 0.125 = \frac{1}{8}\]</span></p>
+</center>
+</div><div class="column">
+<p><img data-src="img/wikipedia_coin-toss.jpg" style="width:75.0%" alt="A hand flipping a coin"><br>
+</p>
+</div></div>
+</section>
+<section id="coin-flips-2" class="slide level2">
+<h2>Coin Flips</h2>
+<div class="columns">
+<div class="column">
+<p>Assuming a fair coin, what’s the probability of flipping:</p>
+<p><br></p>
+<center>
+<p><u>H</u> <u>H</u> <u>T</u> ?</p>
+<p><span class="math display">\[p \times p \times (1-p)\]</span></p>
+</center>
+</div><div class="column">
+<p><img data-src="img/wikipedia_coin-toss.jpg" style="width:75.0%" alt="A hand flipping a coin"><br>
+</p>
+</div></div>
+</section>
+<section id="coin-flips-3" class="slide level2">
+<h2>Coin Flips</h2>
+<div class="columns">
+<div class="column">
+<p>It’s relatively easy to calculate the probability of observing a particular outcome, given that you know the parameters.</p>
+<p><span class="math display">\[\mathrm{Pr}(\mathrm{HHT} | p=0.5)\]</span></p>
+</div><div class="column">
+<p><img data-src="img/wikipedia_coin-toss.jpg" style="width:75.0%" alt="A hand flipping a coin"><br>
+</p>
+</div></div>
+</section>
+<section id="coin-flips-4" class="slide level2">
+<h2>Coin Flips</h2>
+<div class="columns">
+<div class="column">
+<p>It’s relatively easy to calculate the probability of observing a particular outcome, given that you know the parameters.</p>
+<p><span class="math display">\[\mathrm{Pr}(\mathrm{HHT} | p=0.5)\]</span></p>
+<p><span class="math display">\[= 0.125\]</span></p>
+</div><div class="column">
+<p><img data-src="img/wikipedia_coin-toss.jpg" style="width:75.0%" alt="A hand flipping a coin"><br>
+</p>
+</div></div>
+</section>
+<section id="coin-flips-5" class="slide level2">
+<h2>Coin Flips</h2>
+<div class="columns">
+<div class="column">
+<p>It’s relatively easy to calculate the probability of observing a particular outcome, given that you know the parameters.</p>
+<p><span class="math display">\[\mathrm{Pr}(\mathrm{HHT} | p=0.5)\]</span></p>
+<p><span class="math display">\[= 0.125\]</span></p>
+<center>
+<p>But what if we don’t know <span class="math inline">\(p\)</span>?</p>
+</center>
+</div><div class="column">
+<p><img data-src="img/wikipedia_coin-toss.jpg" style="width:75.0%" alt="A hand flipping a coin"><br>
+</p>
+</div></div>
+</section></section>
+<section>
+<section id="estimation" class="title-slide slide level1 center">
+<h1>Estimation</h1>
+
+</section>
+<section id="likelihood" class="slide level2">
+<h2>Likelihood</h2>
+<p><span class="math display">\[\mathcal{L} = \mathrm{Pr(Data|Model)}\]</span> <span class="math display">\[\mathcal{L}(\theta | \mathbf{y}) = \mathrm{Pr(\mathbf{y}|\theta)}\]</span></p>
+<p><br></p>
+<p>In general, our model represents a hypothesis for how our data <span class="math inline">\((\mathbf{y})\)</span> arose from a stochastic process, which includes assumptions about the data generating process and a set of <strong>parameters</strong> <span class="math inline">\((\theta)\)</span> that govern that model.</p>
+</section>
+<section id="likelihood-1" class="slide level2">
+<h2>Likelihood</h2>
+<p><span class="math display">\[\mathcal{L} = \mathrm{Pr(Data|Model)}\]</span> <span class="math display">\[\mathcal{L}(\theta | \mathbf{y}) = \mathrm{Pr(\mathbf{y}|\theta)}\]</span></p>
+<p><br></p>
+<p>In the case of our coin flips, our model includes that the three flips were <em>independent</em> and that a <strong>single parameter</strong> <span class="math inline">\((p)\)</span> describes the probability of either outcome.</p>
+<p><span class="math display">\[\mathrm{Pr(H)} = p; \mathrm{Pr(T)} = 1-p\]</span></p>
+</section>
+<section id="likelihood-2" class="slide level2">
+<h2>Likelihood</h2>
+<p><span class="math display">\[\mathcal{L} = \mathrm{Pr(Data|Model)}\]</span> <span class="math display">\[\mathcal{L}(\theta | \mathbf{y}) = \mathrm{Pr(\mathbf{y}|\theta)}\]</span></p>
+<p><br></p>
+<p>Once we have our model, it’s easy to calculate <span class="math inline">\(\mathcal{L}\)</span> for any given set of parameters.</p>
+</section>
+<section id="likelihood-3" class="slide level2">
+<h2>Likelihood</h2>
+<p><span class="math display">\[\mathcal{L} = \mathrm{Pr(Data|Model)}\]</span> <span class="math display">\[\mathcal{L}(\theta | \mathbf{y}) = \mathrm{Pr(\mathbf{y}|\theta)}\]</span></p>
+<p><br></p>
+<p>But how do we arrive at an estimate for unknown parameters?</p>
+</section>
+<section id="maximum-likelihood-estimation" class="slide level2">
+<h2>Maximum Likelihood Estimation</h2>
+<p>There are many possible criteria for objectively choosing a set of parameters.</p>
+<p><br></p>
+<p>The most popular is known as <strong>maximum likelihood estimation</strong>, where we choose the set of parameters that maximizes the probability of observing our data.</p>
+<p><span class="math display">\[\hat{\theta} = \mathrm{arg\ max}\  \mathcal{L}(\theta | \mathbf{y})\]</span></p>
+<p><br></p>
+<p>This is the primary method for inference in <strong>frequentist statistics</strong>.</p>
+</section>
+<section id="maximum-likelihood-estimation-1" class="slide level2">
+<h2>Maximum Likelihood Estimation</h2>
+<p>So for our coin flip, we could try values of <span class="math inline">\(p\)</span> and calculate the likelihood.</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>p</th>
+<th><span class="math inline">\(\mathcal{L}(p|\mathbf{y} = \mathrm{HHT})\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.1</td>
+<td><span class="math inline">\(0.1 \times 0.1 \times 0.9 = 0.009\)</span></td>
+</tr>
+<tr class="even">
+<td>0.2</td>
+<td><span class="math inline">\(0.2 \times 0.3 \times 0.8 = 0.032\)</span></td>
+</tr>
+<tr class="odd">
+<td>0.3</td>
+<td><span class="math inline">\(0.3 \times 0.3 \times 0.7 = 0.063\)</span></td>
+</tr>
+<tr class="even">
+<td>0.4</td>
+<td><span class="math inline">\(0.4 \times 0.4 \times 0.6 = 0.096\)</span></td>
+</tr>
+<tr class="odd">
+<td>0.5</td>
+<td><span class="math inline">\(0.5 \times 0.5 \times 0.5 = 0.125\)</span></td>
+</tr>
+<tr class="even">
+<td>0.6</td>
+<td><span class="math inline">\(0.6 \times 0.6 \times 0.4 = 0.144\)</span></td>
+</tr>
+<tr class="odd">
+<td>0.7</td>
+<td><span class="math inline">\(0.7 \times 0.7 \times 0.3 = 0.147\)</span></td>
+</tr>
+<tr class="even">
+<td>0.8</td>
+<td><span class="math inline">\(0.8 \times 0.8 \times 0.2 = 0.128\)</span></td>
+</tr>
+<tr class="odd">
+<td>0.9</td>
+<td><span class="math inline">\(0.9 \times 0.9 \times 0.1 = 0.081\)</span></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="maximum-likelihood-estimation-2" class="slide level2 smaller">
+<h2>Maximum Likelihood Estimation</h2>
+<p>So for our coin flip, we could try values of <span class="math inline">\(p\)</span> and calculate the likelihood.</p>
+<p>(The curvature tells us about the <strong>precision</strong> of our estimate).</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="co"># Values of p to try</span></span>
+<span id="cb1-2"><a href=""></a>p <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fl">0.01</span>, <span class="fl">0.99</span>, <span class="at">by =</span> <span class="fl">0.01</span>)</span>
+<span id="cb1-3"><a href=""></a></span>
+<span id="cb1-4"><a href=""></a><span class="co"># Calculate likelihood of HHT</span></span>
+<span id="cb1-5"><a href=""></a>L <span class="ot">&lt;-</span> p <span class="sc">*</span> p <span class="sc">*</span> (<span class="dv">1</span><span class="sc">-</span>p)</span>
+<span id="cb1-6"><a href=""></a></span>
+<span id="cb1-7"><a href=""></a><span class="co"># Plot likelihood curve</span></span>
+<span id="cb1-8"><a href=""></a><span class="fu">plot</span>(<span class="at">x =</span> p, <span class="at">y =</span> L, <span class="at">main =</span> <span class="st">"L(p|HHT)"</span>, <span class="at">xlab =</span> <span class="st">"p"</span>, <span class="at">ylab =</span> <span class="st">"Likelihood"</span>,</span>
+<span id="cb1-9"><a href=""></a>     <span class="at">type =</span> <span class="st">"l"</span>)</span>
+<span id="cb1-10"><a href=""></a><span class="co"># Mark the MLE</span></span>
+<span id="cb1-11"><a href=""></a>which_mle <span class="ot">&lt;-</span> <span class="fu">which</span>(L <span class="sc">==</span> <span class="fu">max</span>(L))</span>
+<span id="cb1-12"><a href=""></a><span class="fu">points</span>(<span class="at">x =</span> p[which_mle], <span class="at">y =</span> L[which_mle], <span class="at">pch =</span> <span class="dv">1</span>, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+
+</div>
+<img data-src="01_regression_lecture_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"></section>
+<section id="maximum-likelihood-estimation-3" class="slide level2">
+<h2>Maximum Likelihood Estimation</h2>
+<p>If <span class="math inline">\(\mathcal{L}\)</span> is differentiable, you can solve for the MLE in closed form.</p>
+<p><br></p>
+<p>But in other cases, numerical estimation is required.</p>
+<p><br></p>
+<p>A variety of optimization algorithms are available to efficiently explore the parameter space.</p>
+</section>
+<section id="bayesian-inference" class="slide level2">
+<h2>Bayesian Inference</h2>
+<p>In <strong>Bayesian statistics</strong>, inference is drawn from the <strong>converse</strong> of the likelihood (known as the posterior distribution).</p>
+<p><span class="math display">\[\mathrm{Pr}(\theta|\mathbf{y}) = \frac{\mathrm{Pr}(\mathbf{y}|\theta) \mathrm{Pr}(\theta)}{\mathrm{Pr}(\mathbf{y})}\]</span></p>
+</section>
+<section id="bayesian-inference-1" class="slide level2">
+<h2>Bayesian Inference</h2>
+<p>In <strong>Bayesian statistics</strong>, inference is drawn from the <strong>converse</strong> of the likelihood (known as the posterior distribution).</p>
+<p><span class="math display">\[\mathrm{Pr}(\theta|\mathbf{y}) \propto \mathrm{Pr}(\mathbf{y}|\theta) \mathrm{Pr}(\theta)\]</span></p>
+</section>
+<section id="bayesian-inference-2" class="slide level2">
+<h2>Bayesian Inference</h2>
+<p>In <strong>Bayesian statistics</strong>, inference is drawn from the <strong>converse</strong> of the likelihood (known as the posterior distribution).</p>
+<p><span class="math display">\[\mathrm{Pr}(\theta|\mathbf{y}) \propto \mathrm{Pr}(\mathbf{y}|\theta) \mathrm{Pr}(\theta)\]</span></p>
+<p>The posterior is proportional to the <strong>likelihood</strong> times the <strong>prior</strong>.</p>
+<p><br></p>
+<div style="font-size:70%">
+<p><em>We’ll come back to this idea later when we talk about GAM theory.</em></p>
+</div>
+</section></section>
+<section>
+<section id="linear-regression" class="title-slide slide level1 center">
+<h1>Linear Regression</h1>
+
+</section>
+<section id="ordinary-linear-regression" class="slide level2 smaller">
+<h2>Ordinary Linear Regression</h2>
+<p>Let’s consider the case where our hypothesis is that a <strong>covariate</strong> <span class="math inline">\((\mathbf{x})\)</span> affects the mean value of our <strong>random variable</strong> <span class="math inline">\((\mathbf{y})\)</span>.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="co"># Set seed</span></span>
+<span id="cb2-2"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">20260211</span>)</span>
+<span id="cb2-3"><a href=""></a></span>
+<span id="cb2-4"><a href=""></a><span class="co"># Choose parameters</span></span>
+<span id="cb2-5"><a href=""></a>b0 <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb2-6"><a href=""></a>b1 <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb2-7"><a href=""></a>sigma <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb2-8"><a href=""></a></span>
+<span id="cb2-9"><a href=""></a><span class="co"># Generate covariate</span></span>
+<span id="cb2-10"><a href=""></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">min =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">max =</span> <span class="dv">1</span>)</span>
+<span id="cb2-11"><a href=""></a></span>
+<span id="cb2-12"><a href=""></a><span class="co"># Generate mean</span></span>
+<span id="cb2-13"><a href=""></a>mu <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1<span class="sc">*</span>x</span>
+<span id="cb2-14"><a href=""></a></span>
+<span id="cb2-15"><a href=""></a><span class="co"># Generate data</span></span>
+<span id="cb2-16"><a href=""></a>y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">100</span>, <span class="at">mean =</span> mu, <span class="at">sd =</span> sigma)</span>
+<span id="cb2-17"><a href=""></a></span>
+<span id="cb2-18"><a href=""></a><span class="co"># Plot</span></span>
+<span id="cb2-19"><a href=""></a><span class="fu">plot</span>(x, y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+
+</div>
+<img data-src="01_regression_lecture_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
+<section id="ordinary-linear-regression-1" class="slide level2 smaller">
+<h2>Ordinary Linear Regression</h2>
+
+<img data-src="01_regression_lecture_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"><p>How do we estimate a line that describes these data?</p>
+</section>
+<section id="ordinary-linear-regression-2" class="slide level2">
+<h2>Ordinary Linear Regression</h2>
+<p><br></p>
+<p>Equation for a line (algebra):</p>
+<p><span class="math display">\[y = mx + b\]</span></p>
+</section>
+<section id="ordinary-linear-regression-3" class="slide level2">
+<h2>Ordinary Linear Regression</h2>
+<p><br></p>
+<p>Equation for a line (algebra):</p>
+<p><span class="math display">\[y = mx + b\]</span></p>
+<p><br></p>
+<p>Equation for a line (statistics):</p>
+<p><span class="math display">\[y = \beta_0 + \beta_1 x + \epsilon\]</span> <span class="math display">\[\epsilon \sim Normal(0, \sigma^2)\]</span></p>
+</section>
+<section id="ordinary-linear-regression-4" class="slide level2">
+<h2>Ordinary Linear Regression</h2>
+<p><span class="math display">\[y = \beta_0 + \beta_1 x + \epsilon\]</span> <span class="math display">\[\epsilon \sim Normal(0, \sigma^2)\]</span></p>
+<p>We want to estimate a set of parameters <span class="math inline">\((\hat{\theta} = \{\hat{\beta_0}, \hat{\beta_1}\})\)</span> for this model, which we can accomplish by <strong>maximum likelihood estimation</strong>.</p>
+<p><br></p>
+<div style="font-size:60%">
+<p><em>In this case, the MLE is equivalent to finding <span class="math inline">\(\hat{\beta_0}; \hat{\beta_1}\)</span> that minimize the sum of squared residuals.</em></p>
+<p><em>Also note that <span class="math inline">\(\sigma^2\)</span> is assumed known and is not part of <span class="math inline">\(\theta\)</span>.</em></p>
+</div>
+</section>
+<section id="ordinary-linear-regression-5" class="slide level2">
+<h2>Ordinary Linear Regression</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="co"># Fit a model</span></span>
+<span id="cb3-2"><a href=""></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x)</span>
+<span id="cb3-3"><a href=""></a></span>
+<span id="cb3-4"><a href=""></a><span class="co"># Plot</span></span>
+<span id="cb3-5"><a href=""></a><span class="fu">plot</span>(x, y)</span>
+<span id="cb3-6"><a href=""></a><span class="co"># Add regression line</span></span>
+<span id="cb3-7"><a href=""></a><span class="fu">abline</span>(m, <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+
+</div>
+<img data-src="01_regression_lecture_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
 <section id="common-statistical-tests-as-linear-regression" class="slide level2">
 <h2>Common Statistical Tests as Linear Regression</h2>
-<p>Content</p>
+<blockquote>
+<p>Most of the common statistical models (t-test, correlation, ANOVA; chi-square, etc.) are special cases of linear models or a very close approximation. This beautiful simplicity means that there is less to learn. In particular, it all comes down to <span class="math inline">\(y=a⋅x+b\)</span> which most students know from highschool. Unfortunately, stats intro courses are usually taught as if each test is an independent tool, needlessly making life more complicated for students and teachers alike.</p>
+</blockquote>
+<div style="font-size: 80%; float: right">
+<p>— Jonas Kristoffer Lindeløv</p>
+<p><a href="https://lindeloev.github.io/tests-as-linear/">Common statistical tests are linear models (or: how to teach stats)</a></p>
+</div>
 </section>
-<section id="generalized-linear-models" class="slide level2">
+<section id="common-statistical-tests-as-linear-regression-1" class="slide level2">
+<h2>Common Statistical Tests as Linear Regression</h2>
+<center>
+<p><a href="https://lindeloev.github.io/tests-as-linear/linear_tests_cheat_sheet.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="PNG of Statistical Test Cheat Sheet"><img data-src="https://lindeloev.github.io/tests-as-linear/linear_tests_cheat_sheet.png" style="width:50.0%" alt="PNG of Statistical Test Cheat Sheet"></a><br>
+</p>
+<p><a href="https://lindeloev.github.io/tests-as-linear/linear_tests_cheat_sheet.pdf" target="blank">Link to PDF</a></p>
+</center>
+</section></section>
+<section>
+<section id="generalized-linear-models" class="title-slide slide level1 center">
+<h1>Generalized Linear Models</h1>
+
+</section>
+<section id="generalized-linear-models-1" class="slide level2">
 <h2>Generalized Linear Models</h2>
-<p>Content</p>
+<p>Our ordinary linear model assumed a continuous response variable.</p>
+<p><br></p>
+<p>What if we’re interested in modeling the effects of covariates on response variables that come from a coin flip (<em>e.g.</em>, Bernoulli, binomial) or count (<em>e.g.</em>, Poisson) distribution?</p>
 </section>
-<section id="generalized-linear-mixed-models" class="slide level2">
+<section id="generalized-linear-models-2" class="slide level2">
+<h2>Generalized Linear Models</h2>
+<p>We wrote our ordinary linear model as:</p>
+<p><span class="math display">\[y = \beta_0 + \beta_1 x + \epsilon\]</span> <span class="math display">\[\epsilon \sim Normal(0, \sigma^2)\]</span></p>
+</section>
+<section id="generalized-linear-models-3" class="slide level2">
+<h2>Generalized Linear Models</h2>
+<p>We can subtly rewrite this as:</p>
+<p><span class="math display">\[\mu = \beta_0 + \beta_1 x \]</span> <span class="math display">\[y \sim Normal(\mu, \sigma^2)\]</span></p>
+<p>Where one of the parameters of our distribution <span class="math inline">\((\mu)\)</span> is a linear function of covariate(s).</p>
+</section>
+<section id="generalized-linear-models-4" class="slide level2">
+<h2>Generalized Linear Models</h2>
+<p>If we want to model a binomial-distributed random variable, can we just do this?</p>
+<p><span class="math display">\[p = \beta_0 + \beta_1 x \]</span> <span class="math display">\[y \sim Binomial(N, p)\]</span></p>
+<p>We still have one of the parameters of our distribution <span class="math inline">\((p)\)</span> as a linear function of covariate(s).</p>
+<p>But the problem is that <span class="math inline">\(p\)</span> must be between 0 and 1.</p>
+</section>
+<section id="generalized-linear-models-5" class="slide level2">
+<h2>Generalized Linear Models</h2>
+<p>Maybe we can add a transformation that will constrain <span class="math inline">\(p\)</span> between 0 and 1.</p>
+<p><span class="math display">\[p = \mathrm{logit}^{-1}(\beta_0 + \beta_1 x) \]</span> <span class="math display">\[y \sim Binomial(N, p)\]</span></p>
+</section>
+<section id="generalized-linear-models-6" class="slide level2">
+<h2>Generalized Linear Models</h2>
+<p>We actually put the <strong>link function</strong> on the LHS of the equation by convention.</p>
+<p><span class="math display">\[\mathrm{logit}(p) = \beta_0 + \beta_1 x \]</span> <span class="math display">\[y \sim Binomial(N, p)\]</span></p>
+</section>
+<section id="generalized-linear-models-7" class="slide level2">
+<h2>Generalized Linear Models</h2>
+<p>GLMs are thus made up of these three components:</p>
+<ul>
+<li>A <strong>probability distribution</strong> for the random variable
+<ul>
+<li>An exponential family distribution (<em>e.g.</em>, Normal, Binomial, Poisson, etc.)</li>
+</ul></li>
+<li>A <strong>link function</strong>
+<ul>
+<li>Chosen to be appropriate for the probability distribution</li>
+<li>Goes on the LHS of the equation</li>
+</ul></li>
+<li>A <strong>linear predictor</strong> <span class="math inline">\((\mathbf{X B})\)</span>
+<ul>
+<li>Which expresses the expected value (mean) of the random variable on the link scale</li>
+</ul></li>
+</ul>
+</section>
+<section id="generalized-linear-models-8" class="slide level2 smaller">
+<h2>Generalized Linear Models</h2>
+<p>For a Bernoulli random variable:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="co"># Set seed</span></span>
+<span id="cb4-2"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">20260211</span> <span class="sc">*</span> <span class="dv">2</span>)</span>
+<span id="cb4-3"><a href=""></a></span>
+<span id="cb4-4"><a href=""></a><span class="co"># Choose parameters</span></span>
+<span id="cb4-5"><a href=""></a>b0 <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">1</span></span>
+<span id="cb4-6"><a href=""></a>b1 <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb4-7"><a href=""></a></span>
+<span id="cb4-8"><a href=""></a><span class="co"># Generate covariate</span></span>
+<span id="cb4-9"><a href=""></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">300</span>, <span class="at">min =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">max =</span> <span class="dv">1</span>)</span>
+<span id="cb4-10"><a href=""></a></span>
+<span id="cb4-11"><a href=""></a><span class="co"># Generate mean</span></span>
+<span id="cb4-12"><a href=""></a>p <span class="ot">&lt;-</span> <span class="fu">plogis</span>(b0 <span class="sc">+</span> b1<span class="sc">*</span>x)</span>
+<span id="cb4-13"><a href=""></a></span>
+<span id="cb4-14"><a href=""></a><span class="co"># Generate data</span></span>
+<span id="cb4-15"><a href=""></a>y <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="at">n =</span> <span class="dv">300</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">prob =</span> p)</span>
+<span id="cb4-16"><a href=""></a></span>
+<span id="cb4-17"><a href=""></a><span class="co"># Plot</span></span>
+<span id="cb4-18"><a href=""></a><span class="fu">plot</span>(x, y, <span class="at">col=</span><span class="st">"white"</span>)</span>
+<span id="cb4-19"><a href=""></a><span class="co"># Transparent squares</span></span>
+<span id="cb4-20"><a href=""></a><span class="fu">points</span>(x, y, <span class="at">pch =</span> <span class="dv">15</span>, <span class="at">col=</span><span class="st">"#00000088"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+
+</div>
+<img data-src="01_regression_lecture_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
+<section id="generalized-linear-models-9" class="slide level2 smaller">
+<h2>Generalized Linear Models</h2>
+<p>Fit a model:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="co"># Fit model</span></span>
+<span id="cb5-2"><a href=""></a>m <span class="ot">&lt;-</span> <span class="fu">glm</span>(y <span class="sc">~</span> x, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>))</span>
+<span id="cb5-3"><a href=""></a></span>
+<span id="cb5-4"><a href=""></a><span class="co"># Model predictions</span></span>
+<span id="cb5-5"><a href=""></a>pred <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>, <span class="at">length.out =</span> <span class="dv">100</span>))</span>
+<span id="cb5-6"><a href=""></a>pred<span class="sc">$</span>p <span class="ot">&lt;-</span> <span class="fu">predict</span>(m, <span class="at">newdata =</span> pred, </span>
+<span id="cb5-7"><a href=""></a>                <span class="at">type =</span> <span class="st">"response"</span>)</span>
+<span id="cb5-8"><a href=""></a></span>
+<span id="cb5-9"><a href=""></a><span class="co"># Plot</span></span>
+<span id="cb5-10"><a href=""></a><span class="fu">plot</span>(x, y, <span class="at">col=</span><span class="st">"white"</span>, <span class="at">ylab =</span> <span class="st">"p"</span>)</span>
+<span id="cb5-11"><a href=""></a><span class="co"># Transparent squares</span></span>
+<span id="cb5-12"><a href=""></a><span class="fu">points</span>(x, y, <span class="at">pch =</span> <span class="dv">15</span>, <span class="at">col=</span><span class="st">"#00000088"</span>)</span>
+<span id="cb5-13"><a href=""></a><span class="co"># Add model prediction</span></span>
+<span id="cb5-14"><a href=""></a><span class="fu">lines</span>(pred<span class="sc">$</span>x, pred<span class="sc">$</span>p, <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+
+</div>
+<img data-src="01_regression_lecture_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section></section>
+<section>
+<section id="generalized-linear-mixed-models" class="title-slide slide level1 center">
+<h1>Generalized Linear Mixed Models</h1>
+
+</section>
+<section id="generalized-linear-mixed-models-1" class="slide level2">
 <h2>Generalized Linear Mixed Models</h2>
-<p>Content</p>
+<p>What if we have groups in our data that introduce non-independence?</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="co"># Mean parameters</span></span>
+<span id="cb6-2"><a href=""></a>b0 <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb6-3"><a href=""></a>b1 <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb6-4"><a href=""></a>sigma <span class="ot">&lt;-</span> <span class="fl">0.25</span></span>
+<span id="cb6-5"><a href=""></a>sigma_group <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb6-6"><a href=""></a></span>
+<span id="cb6-7"><a href=""></a><span class="co"># Set seed</span></span>
+<span id="cb6-8"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">20260211</span> <span class="sc">*</span> <span class="dv">3</span>)</span>
+<span id="cb6-9"><a href=""></a></span>
+<span id="cb6-10"><a href=""></a><span class="co"># Data</span></span>
+<span id="cb6-11"><a href=""></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">1000</span>, <span class="at">min =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">max =</span> <span class="dv">1</span>),</span>
+<span id="cb6-12"><a href=""></a>                 <span class="at">group =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">each =</span> <span class="dv">100</span>),</span>
+<span id="cb6-13"><a href=""></a>                 <span class="at">mu =</span> <span class="cn">NA</span>,</span>
+<span id="cb6-14"><a href=""></a>                 <span class="at">y =</span> <span class="cn">NA</span>)</span>
+<span id="cb6-15"><a href=""></a></span>
+<span id="cb6-16"><a href=""></a><span class="co"># Betas</span></span>
+<span id="cb6-17"><a href=""></a><span class="co"># Random intercepts</span></span>
+<span id="cb6-18"><a href=""></a>b0_j <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="fu">length</span>(<span class="fu">unique</span>(df<span class="sc">$</span>group)),</span>
+<span id="cb6-19"><a href=""></a>              <span class="at">mean =</span> b0,</span>
+<span id="cb6-20"><a href=""></a>              <span class="at">sd =</span> sigma_group)</span>
+<span id="cb6-21"><a href=""></a></span>
+<span id="cb6-22"><a href=""></a><span class="co"># Response</span></span>
+<span id="cb6-23"><a href=""></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(df)) {</span>
+<span id="cb6-24"><a href=""></a>  j <span class="ot">&lt;-</span> df<span class="sc">$</span>group[i]</span>
+<span id="cb6-25"><a href=""></a>  df<span class="sc">$</span>mu[i] <span class="ot">&lt;-</span> b0_j[j] <span class="sc">+</span> b1 <span class="sc">*</span> df<span class="sc">$</span>x[i]</span>
+<span id="cb6-26"><a href=""></a>  df<span class="sc">$</span>y[i] <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">1</span>, <span class="at">mean =</span> df<span class="sc">$</span>mu[i], <span class="at">sd =</span> sigma) </span>
+<span id="cb6-27"><a href=""></a>}</span>
+<span id="cb6-28"><a href=""></a></span>
+<span id="cb6-29"><a href=""></a><span class="co"># Plot</span></span>
+<span id="cb6-30"><a href=""></a><span class="fu">plot</span>(<span class="at">x =</span> df<span class="sc">$</span>x, <span class="at">y =</span> df<span class="sc">$</span>y, <span class="at">col =</span> <span class="fu">factor</span>(df<span class="sc">$</span>group),</span>
+<span id="cb6-31"><a href=""></a>     <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">xlab =</span> <span class="st">"x"</span>, <span class="at">ylab =</span> <span class="st">"y"</span>, <span class="at">main =</span> <span class="st">"Random Intercepts"</span>)</span>
+<span id="cb6-32"><a href=""></a><span class="fu">legend</span>(<span class="st">"topleft"</span>, <span class="at">legend =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">title =</span> <span class="st">"Group"</span>, </span>
+<span id="cb6-33"><a href=""></a>       <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">cex =</span> <span class="fl">0.7</span>,</span>
+<span id="cb6-34"><a href=""></a>       <span class="at">ncol =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+
+</div>
+<img data-src="01_regression_lecture_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
+<section id="generalized-linear-mixed-models-2" class="slide level2">
+<h2>Generalized Linear Mixed Models</h2>
+<p>What if we have groups in our data that introduce non-independence?</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="co"># Mean parameters</span></span>
+<span id="cb7-2"><a href=""></a>b0 <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">2</span></span>
+<span id="cb7-3"><a href=""></a>b1 <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb7-4"><a href=""></a>sigma <span class="ot">&lt;-</span> <span class="fl">0.25</span></span>
+<span id="cb7-5"><a href=""></a>sigma_group <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb7-6"><a href=""></a></span>
+<span id="cb7-7"><a href=""></a><span class="co"># Set seed</span></span>
+<span id="cb7-8"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">20260211</span> <span class="sc">*</span> <span class="dv">3</span>)</span>
+<span id="cb7-9"><a href=""></a></span>
+<span id="cb7-10"><a href=""></a><span class="co"># Data</span></span>
+<span id="cb7-11"><a href=""></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">runif</span>(<span class="at">n =</span> <span class="dv">1000</span>, <span class="at">min =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">max =</span> <span class="dv">1</span>),</span>
+<span id="cb7-12"><a href=""></a>                 <span class="at">group =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">each =</span> <span class="dv">100</span>),</span>
+<span id="cb7-13"><a href=""></a>                 <span class="at">mu =</span> <span class="cn">NA</span>,</span>
+<span id="cb7-14"><a href=""></a>                 <span class="at">y =</span> <span class="cn">NA</span>)</span>
+<span id="cb7-15"><a href=""></a></span>
+<span id="cb7-16"><a href=""></a><span class="co"># Betas</span></span>
+<span id="cb7-17"><a href=""></a><span class="co"># Random slopes</span></span>
+<span id="cb7-18"><a href=""></a>b1_j <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="fu">length</span>(<span class="fu">unique</span>(df<span class="sc">$</span>group)),</span>
+<span id="cb7-19"><a href=""></a>              <span class="at">mean =</span> b1,</span>
+<span id="cb7-20"><a href=""></a>              <span class="at">sd =</span> sigma_group)</span>
+<span id="cb7-21"><a href=""></a></span>
+<span id="cb7-22"><a href=""></a><span class="co"># Response</span></span>
+<span id="cb7-23"><a href=""></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(df)) {</span>
+<span id="cb7-24"><a href=""></a>  j <span class="ot">&lt;-</span> df<span class="sc">$</span>group[i]</span>
+<span id="cb7-25"><a href=""></a>  df<span class="sc">$</span>mu[i] <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1_j[j] <span class="sc">*</span> df<span class="sc">$</span>x[i]</span>
+<span id="cb7-26"><a href=""></a>  df<span class="sc">$</span>y[i] <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">1</span>, <span class="at">mean =</span> df<span class="sc">$</span>mu[i], <span class="at">sd =</span> sigma) </span>
+<span id="cb7-27"><a href=""></a>}</span>
+<span id="cb7-28"><a href=""></a></span>
+<span id="cb7-29"><a href=""></a><span class="co"># Plot</span></span>
+<span id="cb7-30"><a href=""></a><span class="fu">plot</span>(<span class="at">x =</span> df<span class="sc">$</span>x, <span class="at">y =</span> df<span class="sc">$</span>y, <span class="at">col =</span> <span class="fu">factor</span>(df<span class="sc">$</span>group),</span>
+<span id="cb7-31"><a href=""></a>     <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">xlab =</span> <span class="st">"x"</span>, <span class="at">ylab =</span> <span class="st">"y"</span>, <span class="at">main =</span> <span class="st">"Random Slopes"</span>)</span>
+<span id="cb7-32"><a href=""></a><span class="fu">legend</span>(<span class="st">"topleft"</span>, <span class="at">legend =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">title =</span> <span class="st">"Group"</span>, </span>
+<span id="cb7-33"><a href=""></a>       <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">cex =</span> <span class="fl">0.7</span>,</span>
+<span id="cb7-34"><a href=""></a>       <span class="at">ncol =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+
+</div>
+<img data-src="01_regression_lecture_files/figure-revealjs/unnamed-chunk-8-1.png" width="960" class="r-stretch"></section>
+<section id="generalized-linear-mixed-models-3" class="slide level2">
+<h2>Generalized Linear Mixed Models</h2>
+<p>Generalized Linear Mixed Models (GLMMs) <strong>mix</strong> together:</p>
+<ul>
+<li><strong>Fixed</strong> effects
+<ul>
+<li>Single parameters, like in an ordinary GLM</li>
+</ul></li>
+<li><strong>Random</strong> effects
+<ul>
+<li>Group-level parameters, assumed to be random variables from a normal distribution</li>
+</ul></li>
+</ul>
+<p>Like GLMs, the response variable can come from any exponential family distribution.</p>
+<ul>
+<li>If the response variable comes from a normal distribution, they are often referred to as <strong>linear mixed models</strong> (<strong>LMMs</strong>).</li>
+<li>For all other distributions, they are referred to as <strong>GLMMs</strong>.</li>
+</ul>
 </section>
-<section id="generalized-additive-models" class="slide level2">
+<section id="generalized-linear-mixed-models-4" class="slide level2">
+<h2>Generalized Linear Mixed Models</h2>
+<p>Example random intercept model: <span class="math display">\[\mu_{i, j} = (\beta_0 + \eta_j) + \beta_{1} x_{i,j} \]</span> <span class="math display">\[\eta_{j} \sim Normal(0, \sigma_{\eta}^2)\]</span> <span class="math display">\[y_{i, j} \sim Normal(\mu_{i, j}, \sigma^2)\]</span></p>
+</section>
+<section id="generalized-linear-mixed-models-5" class="slide level2">
+<h2>Generalized Linear Mixed Models</h2>
+<p>Example random slope model: <span class="math display">\[\mu_{i, j} = \beta_0 + (\beta_1 + \eta_j)  x_{i,j} \]</span> <span class="math display">\[\eta_{j} \sim Normal(0, \sigma_{\eta}^2)\]</span> <span class="math display">\[y_{i, j} \sim Normal(\mu_{i, j}, \sigma^2)\]</span></p>
+</section>
+<section id="generalized-linear-mixed-models-6" class="slide level2">
+<h2>Generalized Linear Mixed Models</h2>
+<p>General form of a LMM (using matrix math): <span class="math display">\[\boldsymbol{\mu} = \boldsymbol{XB} + \boldsymbol{Zu}\]</span> <span class="math display">\[\boldsymbol{u} \sim MVN(\boldsymbol{0}, \boldsymbol{G})\]</span> <span class="math display">\[\mathbf{G} =
+\begin{bmatrix}
+\sigma^{2}_{int} &amp; \sigma^{2}_{int,slope} \\
+\sigma^{2}_{int,slope} &amp; \sigma^{2}_{slope}
+\end{bmatrix}\]</span> <span class="math display">\[y_{i} \sim Normal(\mu_{i}, \sigma^2)\]</span></p>
+<p><br></p>
+<div style="font-size:60%">
+<p><em>Don’t get hung on up on this notation. Just realize that the random effects can come from a <strong>multivariate</strong> normal distribution and can thus have covariance.</em></p>
+</div>
+</section>
+<section id="recap-so-far" class="slide level2" data-background-color="#332c1c">
+<h2>Recap, so far</h2>
+<ul>
+<li class="fragment">We use probability theory to model how data arise from random processes.
+<ul>
+<li class="fragment">The <strong>likelihood</strong> is an important quantity for both <strong>frequentists</strong> and <strong>Bayesians</strong>.</li>
+</ul></li>
+<li class="fragment">We can simply <strong>estimate</strong> the <strong>parameters</strong> of a probability distribution without covariates.</li>
+<li class="fragment"><strong>LMs</strong> allow covariates by assuming data are normally distributed about a mean given by a linear predictor.</li>
+<li class="fragment"><strong>GLMs</strong> relax the assumption that data are normally distributed, allowing other (exponential family) distributions.
+<ul>
+<li class="fragment">They require a <strong>link function</strong> to relate the parameters to the linear predictor.</li>
+</ul></li>
+<li class="fragment"><strong>GLMMs</strong> relax the assumption that the data are independent, allowing grouping structure.
+<ul>
+<li class="fragment">They contain both <strong>fixed effects</strong> and <strong>random effects</strong>, with random effects themselves being <strong>random variables</strong>.</li>
+<li class="fragment">Random effects come from a <strong>multivariate normal distribution</strong>, with a mean of 0 such that the population-level mean is given by the fixed effects.</li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="generalized-additive-models" class="title-slide slide level1 center">
+<h1>Generalized Additive Models</h1>
+
+</section>
+<section id="generalized-additive-models-1" class="slide level2">
 <h2>Generalized Additive Models</h2>
-<p>Content</p>
+<p><strong>Generalized additive models</strong> (GAMs) build on top of <strong>GLMs</strong> (and <strong>GLMMs</strong>) by relaxing the assumption that the mean of the random variable is <em>linearly</em> related to covariates.</p>
+<p><br></p>
+<p>The goal with a GAM is to estimate an <strong>unknown function</strong> that relates the mean of the random variable to covariates.</p>
+<p><span class="math display">\[\mu = f(x)\]</span> <span class="math display">\[y \sim Normal(\mu, \sigma^2)\]</span></p>
+</section>
+<section id="generalized-additive-models-2" class="slide level2">
+<h2>Generalized Additive Models</h2>
+<p><strong>Generalized additive models</strong> (GAMs) build on top of <strong>GLMs</strong> (and <strong>GLMMs</strong>) by relaxing the assumption that the mean of the random variable is <em>linearly</em> related to covariates.</p>
+<p><br></p>
+<p>The goal with a GAM is to estimate an <strong>unknown function</strong> that relates the mean of the random variable to covariates.</p>
+<p><span class="math display">\[\mu = f(x)\]</span> <span class="math display">\[y \sim Normal(\mu, \sigma^2)\]</span></p>
+<p>GLMs are a special case of GAMs where:</p>
+<p><span class="math display">\[f(x) = \beta_0 +\beta_1 x\]</span></p>
+</section>
+<section id="generalized-additive-models-3" class="slide level2">
+<h2>Generalized Additive Models</h2>
+
+<img data-src="01_regression_lecture_files/figure-revealjs/unnamed-chunk-9-1.png" width="960" class="r-stretch"></section>
+<section id="generalized-additive-models-4" class="slide level2">
+<h2>Generalized Additive Models</h2>
+
+<img data-src="01_regression_lecture_files/figure-revealjs/unnamed-chunk-10-1.png" width="960" class="r-stretch"></section>
+<section id="generalized-additive-models-5" class="slide level2">
+<h2>Generalized Additive Models</h2>
+<p><br></p>
+<center>
+How? We’ll see after lunch!
+</center>
+</section></section>
+<section id="questions" class="title-slide slide level1 center">
+<h1>Questions?</h1>
 
 </section>
     </div>
@@ -342,9 +1031,9 @@ Brian J. Smith
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1050,
+        width: 1600,
 
-        height: 700,
+        height: 900,
 
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
@@ -376,6 +1065,82 @@ Brian J. Smith
         ]
       });
     </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
@@ -544,6 +1309,38 @@ Brian J. Smith
         }
       });
       </script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
     
 
 </body></html>

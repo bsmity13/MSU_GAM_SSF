@@ -1,0 +1,153 @@
+---
+title: "Workshop Introductions"
+author: "Brian J. Smith"
+date: "11 February 2026"
+format: 
+  revealjs:
+    theme: default
+    width: 1600
+    height: 900
+    margin: 0.1
+    mermaid: 
+      theme: forest
+editor: source
+---
+
+## Dr. Brian J. Smith
+
+:::: {.columns}
+
+::: {.column width="25%"}
+![Brian](img/BJS_2024.jpg){width=100% .lightbox}\
+:::
+
+::: {.column width="75%"}  
+
+ - B.S. in Wildlife Ecology & Conservation from University of Florida
+ - M.S. in Wildlife Ecology & Conservation from University of Florida 
+ - Ph.D. in Ecology from Utah State University  
+ 
+:::
+
+::::
+
+::::: footer
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+![University of Florida](img/University_of_Florida_logo.png){width=50%}\
+
+:::
+
+::: {.column width="50%"}  
+
+![Utah State University](img/Utah_State_University.png){width=50%}\
+ 
+:::
+
+::::
+
+:::::
+
+---
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+![Cover of the Wildlife Professional](img/BJS_WP.jpg){width=80% .lightbox}\
+
+:::
+
+::: {.column width="50%"}  
+
+![Brian with a python](img/BJS_python.JPG){width=100% .lightbox}\
+Master's Thesis: *Spatial Ecology of Invasive Burmese Pythons in the Florida Everglades*
+ 
+:::
+
+::::
+
+---
+
+![Brian with PhD advisors Tal Avgar and Dan MacNulty](img/PhD_advisors.jpg){width=100% .lightbox}\
+
+---
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+![Brian with an elk antler](img/BJS_antler.jpg){width=80% .lightbox}\
+
+:::
+
+::: {.column width="50%"}  
+
+![A radio-collared elk in Yellowstone National Park](img/collared_elk.jpg){width=100% .lightbox}\
+Dissertation: *Causes and Consequences of Space-Use Behavior Under Predation Risk in a Free-Living System*
+ 
+:::
+
+::::
+
+---
+
+![Brian's split expertise](img/expertise_split.png){width=100%}\
+
+## Introduce Yourself
+
+- Name (nickname?)
+- Where you're from
+- Your degree program
+- Your area of interest/thesis topic
+- Why you're interested in GAMs (today)
+- If you're interested in SSFs (Friday)
+
+## Agenda
+
+### Today
+
+9:00 am - 3:00 pm
+
+- Introductions and workshop overview (~ 9:00 - 10:00)
+- Overview of regression modeling (*lecture*; ~ 10:00 - 11:00)
+- Simulating data to understand regression models (*R walkthrough*; ~ 11:00 - 11:30)
+- Lunch (~ 11:30 - 12:30)
+- GAM theory (*lecture*; ~ 12:30 - 1:30)
+- Fitting GAMs to ecological data in R (*R walkthrough*; ~ 1:30 - 2:30)
+- Questions/spare time (~ 30 minutes)
+
+## Agenda
+
+### Thursday
+
+*No workshop*
+
+- Seminar from 3:30 - 4:30 pm
+
+## Agenda
+
+### Friday
+
+8:00 am - 2:00 pm
+
+- Introductions and review of Wednesday (~ 8:00 - 8:30)
+- RSFs and SSFs (*lecture*; ~ 8:30 - 10:00)
+- Fitting SSFs in R (*R walkthrough*; ~ 10:00 - 11:00)
+- Lunch (~ 11:00 - 12:00)
+- SSFs with GAMs (*lecture*; ~ 12:00 - 12:45)
+- SSFs with GAMs in R (*code walkthrough*; ~ 12:45 - 1:30)
+- Questions/spare time (~ 30 minutes)
+
+## GitHub Page
+
+</br>
+
+<center>
+[https://github.com/bsmity13/MSU_GAM_SSF.git](https://github.com/bsmity13/MSU_GAM_SSF.git){target="blank"}
+</center>
+
+# Questions? 

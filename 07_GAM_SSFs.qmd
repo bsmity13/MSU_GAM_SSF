@@ -4,9 +4,10 @@ author: "Brian J. Smith"
 date: "13 February 2026"
 format: 
   revealjs:
+    width: 1600
+    height: 900
+    margin: 0.1
     theme: default
-    mermaid: 
-      theme: forest
 editor: source
 ---
 
