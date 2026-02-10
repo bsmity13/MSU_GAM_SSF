@@ -22,12 +22,13 @@ flexibility of GAMs.
 
 ### Wednesday, Feb 11
 9:00 am - 3:00 pm
-- Introductions and workshop overview
-- Overview of regression modeling (*lecture*)
-- Simulating data to understand regression models (*R walkthrough*)
-- Lunch (~11:30 - 12:30)
-- GAM theory (*lecture*)
-- Fitting GAMs to ecological data in R (*R walkthrough*)
+- Introductions and workshop overview (~ 9:00 - 10:00)
+- Overview of regression modeling (*lecture*; ~ 10:00 - 11:00)
+- Simulating data to understand regression models (*R walkthrough*; ~ 11:00 - 11:30)
+- Lunch (~ 11:30 - 12:30)
+- GAM theory (*lecture*; ~ 12:30 - 1:30)
+- Fitting GAMs to ecological data in R (*R walkthrough*; ~ 1:30 - 2:30)
+- Questions/spare time (~ 30 minutes)
 
 ### Thursday, Feb 12
 On campus all day
@@ -35,12 +36,13 @@ On campus all day
 
 ### Friday, Feb 13
 8:00 am - 2:00 pm
-- Introductions and review of Wednesday
-- RSFs and SSFs (*lecture*)
-- Fitting SSFs in R (*R walkthrough*)
-- Lunch (~11:00 - 12:00)
-- SSFs with GAMs (*lecture*)
-- SSFs with GAMs in R (*code walkthrough*)
+- Introductions and review of Wednesday (~ 8:00 - 8:30)
+- RSFs and SSFs (*lecture*; ~ 8:30 - 10:00)
+- Fitting SSFs in R (*R walkthrough*; ~ 10:00 - 11:00)
+- Lunch (~ 11:00 - 12:00)
+- SSFs with GAMs (*lecture*; ~ 12:00 - 12:45)
+- SSFs with GAMs in R (*code walkthrough*; ~ 12:45 - 1:30)
+- Questions/spare time (~ 30 minutes)
 
 ## Repository Structure
 
