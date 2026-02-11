@@ -633,6 +633,40 @@ sm_reml <- gam(y ~ s(x, bs = "cr", k = 50), data = dat,
 print(sm_reml$sp)
 ```
 
+## Penalizing Complexity {.smaller}
+
+So how did we do? The true generating function for these data was:
+
+$$\mu = \sin(8x) + 2x^2 -2x + 2$$
+$$y \sim Normal(\mu, \sigma = 0.5)$$
+
+```{r}
+#| echo: true
+#| code-fold: true
+#| fig-align: center
+
+pred$REML <- predict(sm_reml, newdata = pred)
+pred$True <- my_fun(pred$x)
+
+pred_long <- pred %>% 
+  select(x, REML, True) %>% 
+  pivot_longer(REML:True, 
+               names_to = "Function",
+                          values_to = "y") %>% 
+  mutate(Function = factor(Function, levels = c("REML", 
+                                              "True")))
+
+# Plot
+ggplot() +
+  geom_point(data = dat, aes(x = x, y = y)) +
+  geom_line(data = pred_long, aes(x = x, y = y, color = Function),
+            linewidth = 2) +
+  theme_classic()
+
+```
+
+The GAM was a very good approximation for this function (and remember, there are confidence intervals we're not showing here).
+
 ## Penalizing Complexity
 
 </br>
@@ -727,8 +761,9 @@ See also [Pedersen et al. (2019)](https://doi.org/10.7717/peerj.6876){target="bl
 
 # Resources
 
-## Links
+## Resources
 
+- [Generalized Additive Models](https://doi.org/10.1201/9781315370279), by Simon Wood
 - [GAMs in R](https://noamross.github.io/gams-in-r-course/){target="blank"}, by Noam Ross
 - [GAM Physalia-Courses Course](https://gavinsimpson.github.io/physalia-gam-course/){target="blank"}, by Gavin Simpson
 - [From the bottom of the heap](https://fromthebottomoftheheap.net/){target="blank"}, blog by Gavin Simpson

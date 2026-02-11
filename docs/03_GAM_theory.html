@@ -685,7 +685,36 @@ Brian J. Smith
 </div>
 </div>
 </section>
-<section id="penalizing-complexity-8" class="slide level2">
+<section id="penalizing-complexity-8" class="slide level2 smaller">
+<h2>Penalizing Complexity</h2>
+<p>So how did we do? The true generating function for these data was:</p>
+<p><span class="math display">\[\mu = \sin(8x) + 2x^2 -2x + 2\]</span> <span class="math display">\[y \sim Normal(\mu, \sigma = 0.5)\]</span></p>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a>pred<span class="sc">$</span>REML <span class="ot">&lt;-</span> <span class="fu">predict</span>(sm_reml, <span class="at">newdata =</span> pred)</span>
+<span id="cb11-2"><a href=""></a>pred<span class="sc">$</span>True <span class="ot">&lt;-</span> <span class="fu">my_fun</span>(pred<span class="sc">$</span>x)</span>
+<span id="cb11-3"><a href=""></a></span>
+<span id="cb11-4"><a href=""></a>pred_long <span class="ot">&lt;-</span> pred <span class="sc">%&gt;%</span> </span>
+<span id="cb11-5"><a href=""></a>  <span class="fu">select</span>(x, REML, True) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-6"><a href=""></a>  <span class="fu">pivot_longer</span>(REML<span class="sc">:</span>True, </span>
+<span id="cb11-7"><a href=""></a>               <span class="at">names_to =</span> <span class="st">"Function"</span>,</span>
+<span id="cb11-8"><a href=""></a>                          <span class="at">values_to =</span> <span class="st">"y"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-9"><a href=""></a>  <span class="fu">mutate</span>(<span class="at">Function =</span> <span class="fu">factor</span>(Function, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"REML"</span>, </span>
+<span id="cb11-10"><a href=""></a>                                              <span class="st">"True"</span>)))</span>
+<span id="cb11-11"><a href=""></a></span>
+<span id="cb11-12"><a href=""></a><span class="co"># Plot</span></span>
+<span id="cb11-13"><a href=""></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb11-14"><a href=""></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> dat, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)) <span class="sc">+</span></span>
+<span id="cb11-15"><a href=""></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> pred_long, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">color =</span> Function),</span>
+<span id="cb11-16"><a href=""></a>            <span class="at">linewidth =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb11-17"><a href=""></a>  <span class="fu">theme_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+
+</div>
+<img data-src="03_GAM_theory_files/figure-revealjs/unnamed-chunk-21-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><p>The GAM was a very good approximation for this function (and remember, there are confidence intervals we’re not showing here).</p>
+</section>
+<section id="penalizing-complexity-9" class="slide level2">
 <h2>Penalizing Complexity</h2>
 <p><br></p>
 <p>After estimating our parameters with REML, the fitted function <span class="math inline">\((\hat{f})\)</span> has fewer <strong>effective degrees of freedom</strong> (EDF) than an unpenalized function would have.</p>
@@ -752,9 +781,10 @@ Brian J. Smith
 <h1>Resources</h1>
 
 </section>
-<section id="links" class="slide level2">
-<h2>Links</h2>
+<section id="resources-1" class="slide level2">
+<h2>Resources</h2>
 <ul>
+<li><a href="https://doi.org/10.1201/9781315370279">Generalized Additive Models</a>, by Simon Wood</li>
 <li><a href="https://noamross.github.io/gams-in-r-course/" target="blank">GAMs in R</a>, by Noam Ross</li>
 <li><a href="https://gavinsimpson.github.io/physalia-gam-course/" target="blank">GAM Physalia-Courses Course</a>, by Gavin Simpson</li>
 <li><a href="https://fromthebottomoftheheap.net/" target="blank">From the bottom of the heap</a>, blog by Gavin Simpson</li>
