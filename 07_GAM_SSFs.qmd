@@ -11,22 +11,141 @@ format:
 editor: source
 ---
 
-## Problem Statement
+<center>
 
-Content
+![Klappstein et al. (2024)](img/Klappstein et al 2024.png)\
+
+[Klappstein et al. (2024)](https://doi.org/10.1111/2041-210X.14367){target="blank"}
+
+</center>
+
+---
+
+![Klappstein et al. (2024) Figure 1](img/Klappstein_fig1.jpg){width="50%" .lightbox}\
+
 
 ## Non-linear Selection
 
-Content
+![Klappstein et al. (2024) Figure 1, panel 1](img/Klappstein_fig1a.png)\
 
-## Time-varying Selection
-
-Content
+- Non-linear habitat selection
+- Non-parametric movement kernels
+- Useful in RSFs, too
 
 ## Random Slopes
 
-Content
+![Klappstein et al. (2024) Figure 1, panel 2](img/Klappstein_fig1b.png)\
+
+- Easier than the Poisson "trick" using `glmmTMB` or custom models
+- Fitting is slower than `glmmTMB` for large numbers of individuals
+- Limited flexibility in random effects structure
+
+## Hierarchical Smooths
+
+![Klappstein et al. (2024) Figure 1, panel 3](img/Klappstein_fig1c.png)\
+
+- Analogous to a random effect, but for a smooth
+- Lots of potential complexity and pitfalls here
+- See [Pedersen et al. (2019)](https://doi.org/10.7717/peerj.6876){target="blank"} for more information on hierarchical GAMs
 
 ## Spatial Random Effects
 
-Content
+![Klappstein et al. (2024) Figure 1, panel 4](img/Klappstein_fig1d.png)\
+
+- Accounts for unexplained spatial variation in selection
+- `mgcv` can fit multiple types of spatial models
+- Includes simple 2D smoothing of xy-coordinates
+- Includes Gaussian process models, aka Kriging
+- Sometimes referred to as a spatial random effect
+
+## Spatial Random Effects
+
+![Elk selection Gaussian process](img/xy_log_rss.png){width="50%" .lightbox}\
+
+I used a Gaussian process smooth in an early version of my elk agriculture depredation model.
+
+`s(x, y, bs = "gp")`
+
+See `?smooth.construct.gp.smooth.spec`
+
+## Time-varying Selection
+
+![Klappstein et al. (2024) Figure 1, panel 5](img/Klappstein_fig1e.png)\
+
+## Time-varying Selection
+
+![Elk selection for agriculture](img/smooth_ag.png){width="50%" .lightbox}\
+
+This is how I created the figure I showed in my seminar yesterday. Note that there is time varying selection for agriculture (using a cyclic cubic basis) and an individual random slope.
+
+`s(doy, by = agriculture, bs = "cc")`
+
+# Specifying the model in `R`
+
+## Specifying the model in `R`
+
+</br>
+
+- SSFs are typically fit using conditional logistic regression
+- Conditional logistic regression can be shown to be likelihood-equivalent to a particular form of a Cox proportional hazards model
+- `mgcv::gam()` can fit Cox PH models with `family = cox.ph`
+
+## Specifying the model in `R`
+
+</br>
+
+Syntax:
+
+<center>
+
+```{r}
+#| echo: true
+#| eval: false
+
+m <- gam(cbind(times, stratum) ~ s(h1) + s(h2) + sl_ + log(sl_) + cos(ta_),
+         data = dataset,
+         family = cox.ph,
+         weights = case_)
+
+```
+
+</center>
+
+</br>
+
+In all models:
+
+- `times` is a vector of all `1`s
+- `stratum` is a `factor` variable uniquely identifying used steps and their matched available steps
+- `case_` is a vector of `0`s and `1`s identifying the used (`1`) and available (`0`) steps
+
+
+## Specifying the model in `R`
+
+</br>
+
+Syntax:
+
+<center>
+
+```{r}
+#| echo: true
+#| eval: false
+
+m <- gam(cbind(times, stratum) ~ s(h1) + s(h2) + sl_ + log(sl_) + cos(ta_),
+         data = dataset,
+         family = cox.ph,
+         weights = case_)
+
+```
+
+</center>
+
+</br>
+
+For your specific model, you might want to change how you treat these:
+
+- `s(h1)` and `s(h2)` specify smooth selection for habitat variables
+- `sl_`, `log(sl_)`, and `cos(ta_)` are parametric terms for updating step-length and turn-angle distributions
+
+# Questions?

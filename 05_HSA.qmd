@@ -35,6 +35,25 @@ bib <- ReadBib("refs/05_hsa.bib")
 - SSFs with GAMs in R (*code walkthrough*; ~ 12:45 - 1:30)
 - Questions/spare time (~ 30 minutes)
 
+## Resources for RSFs and SSFs
+
+![Fieberg et al. (2021)](img/fieberg2021.png)\
+
+[Fieberg et al. (2021)](https://doi.org/10.1111/1365-2656.13441){target="blank"}
+
+## Resources for RSFs and SSFs
+
+![Northrup et al. (2022)](img/northrup2022.png)\
+
+[Northrup et al. (2022)](https://doi.org/10.1002/eap.2470){target="blank"}
+
+
+## Resources for RSFs and SSFs
+
+![Matthiopoulos et al. (2023)](img/SHA.png){width="25%"}\
+
+[Matthiopoulos et al. (2023)](https://bookdown.org/jfieberg/SHABook/){target="blank"}
+
 # What is habitat selection?
 
 ## Terminology 
@@ -49,7 +68,7 @@ bib <- ReadBib("refs/05_hsa.bib")
 
 ::: {style="font-size: 50%;"}
 
-We will primarily use the terminology and notation of [Matthiopoulos et al. (2023)](https://bookdown.org/jfieberg/SHABook/).
+We will primarily use the terminology and notation of [Matthiopoulos et al. (2023)](https://bookdown.org/jfieberg/SHABook/){target="blank"}.
 
 Note that Lele et al. (2013) is another good source for this information, with similar definitions.
 
@@ -434,8 +453,11 @@ log-transforming $w(x)$ makes selection correspond to $-/0/+$:
 
 - A model for events in geographic space where the expected **density** of points depends on local spatial predictors through a spatially varying intensity function.
 
-.center[
-We will denote the intensity function at location $s$ in **geographic space** as $\lambda(s)$.]
+<center>
+
+We will denote the intensity function at location $s$ in **geographic space** as $\lambda(s)$.
+
+</center>
 
 - The number of events in any given region is assumed to be Poisson distributed, with mean (and variance) given by the average intensity function over the region.
 
@@ -449,15 +471,11 @@ We will denote the intensity function at location $s$ in **geographic space** as
   - MaxEnt
   - Weighted distribution theory (with an exponential form)
   - Resource utilization functions (RUFs)
-  - .grn[Resource selection functions (RSFs), a.k.a. habitat selection functions (**HSFs**)]
+  - Resource selection functions (RSFs), a.k.a. habitat selection functions (**HSFs**)
 
----
-class: center, middle
 
 # Habitat Selection Functions
 *Fitting IPP Models to Telemetry Data*
-
----
 
 ## Habitat Selection Functions (HSFs)
 
@@ -469,8 +487,6 @@ $$\Rightarrow$$
 
 $$\lambda(s) = exp[\beta_0 + \beta_1 h_1(s) + ... + \beta_k h_k(s)]$$
 
----
-
 ## Habitat Selection Functions (HSFs)
 
 The intensity in geographic space, $\lambda(s)$, is proportional to the habitat selection function in environmental space, $w(x)$ (Matthiopoulos et al. 2023).
@@ -479,20 +495,14 @@ $$\lambda(s) \propto w(x(s))$$
 
 where $x(s)$ is the value of the habitat dimensions (the E-space coordinates) at the location $s$ in G-space.
 
-*Note this implies $w(x)$ is an exponential function, too.*
-
-*Also note that the transition from E-space to G-space can lead to nonsensical predictions. We will return to this point later in the workshop.*
-
----
-
 ## Habitat Selection Functions (HSFs)
 
 The spatial events we are focused on modeling here are telemetry relocations.
+
 - Absolute density of points depends on frequency and duration of telemetry
   - *i.e.*, it is not of biological interest.
   - This implies that $\beta_0$ is not of biological interest.
   
----
 
 ## How do we fit an HSF?
 
@@ -504,7 +514,6 @@ $$y(s) \sim Poisson\left(\lambda(s)\right)$$
 
 (Note that the area of a pixel should be included as an offset -- explained in Fieberg et al. 2021).
 
----
 
 ## How do we fit an HSF?
 
@@ -516,7 +525,6 @@ $$y(s) \sim Binomial\left(N = 1, p = \lambda(s)\right)$$
 
 This is the most common approach for fitting HSFs.
 
----
 
 ## Note the similarity
 
@@ -529,7 +537,6 @@ $$log[\lambda(s)] = \beta_0 + \sum_{j=1}^k \beta_j h_j(s)$$
 
 $$logit[\lambda(s)] = log\left[\frac{\lambda(s)}{1 - \lambda(s)}\right] = \beta_0 + \sum_{j=1}^k \beta_j h_j(s)$$
 
----
 
 ## Poisson vs. Binomial
 
@@ -538,17 +545,15 @@ $$\Rightarrow$$
 $$\log[\lambda(s)] \approx log\left[\frac{\lambda(s)}{1 - \lambda(s)}\right]$$
 
 
----
-
 ## Poisson vs. Binomial 
   
 Also note that the Poisson is a limiting case of the Binomial distribution when $N$ gets very large and $p$ gets very small.
 
----
 
 ## What does this mean for fitting HSFs?
 
 Our binomial GLM is only a good approximation for the IPP model when the number of available locations gets *large* $(\rightarrow \infty)$, which implies:
+
 - $E[logit(\lambda(s))] \rightarrow 0$
 - Binomial $\rightarrow$ Poisson
 
@@ -571,28 +576,15 @@ Further, assigning "infinite weights" to available points ensures this equivalen
   - Autocorrelation must be due to habitat autocorrelation.
   - Should be no *residual* autocorrelation.
 
-## Take-home messages
+## Take-home messages {background-color="#332c1c"}
 
 - The IPP model underlies many common space-use models, including HSFs.  
   - The IPP models point *density*.  
-
 - The HSF models density of points (telemetry locations) as a function of habitat.
-
 - We use logistic regression to fit the HSF.
   - The number of available points should be large.
   - The available points should be given large weights.
-  
 - The resulting intercept is not of interest (so ignore it), but the slopes measure habitat selection.
-
-
-# Resource Selection Functions
-
-## RSFs
-
-- Manly
-
-
-## Take-home messages {background-color="#332c1c"}
 
 # Relative Selection Strength
 Effect Sizes from Habitat Selection Models
@@ -667,19 +659,95 @@ Note also that this gives us a way to intuitively think of each individual $\bet
 
 ## SSFs
 
-- Fortin
+![Fortin et al. (2005)](img/Fortin2005.png)\
+
+[Fortin et al. (2005)](https://doi.org/10.1890/04-0953)
+
+## SSFs
+
+![Forester et al. (2009)](img/Forester2009.png)\
+
+[Forester et al. (2009)](https://doi.org/10.1890/08-0874.1)
 
 ## iSSFs
 
-- Avgar
+![Avgar et al. (2016)](img/Avgar2016.png)\
 
-- Michelot
+[Avgar et al. (2016)](https://doi.org/10.1111/2041-210X.12528)
 
-## Scaling up SSFs
+## SSF vs. iSSF
 
-Content
+:::: {.columns}
+
+::: {.column}
+
+### SSF
+
+- Sample available steps from empirical distribution
+  - Assumes a movement model
+- Make inference only on habitat selection
+  - HS parameters biased
+
+:::
+
+::: {.column}
+
+### iSSF
+
+- Sample available steps from a parametric distribution	
+  -Estimates a movement model
+- Make inference on habitat selection and movement
+
+:::
+
+::::
+
+## Overview of iSSA
+
+Availability in (i)SSA is defined at the step level.
+
+- Analyzed with *conditional* logistic regression, comparing used and available for each observed step paired with many available steps.
+
+- Allows time-varying covariates.
+
+
+## Overview of iSSA
+
+Unlike *unconditional* HSFs, (i)SSFs are appropriate for movement data with high fix rates.
+
+## Overview of iSSA
+
+*Integrated* step-selection analysis parameterizes two independent processes:
+
+1. Movement-free habitat selection
+
+2. Selection-free movement
+
+These two processes combine to give rise to the observed movement trajectory.
+
+## Overview of iSSA
+
+iSSA requires available steps to be sampled from a parametric distribution.
+
+- Distributions must be from the exponential family to be fit via GLM.
+
+- Movement parameters estimated by GLM *adjust* tentative distribution to estimate the parameters of the true selection-free movement distribution.
+
+---
+
+## SSFs 
+
+![Michelot et al. (2024)](img/michelot2024.png)\
+
+[Michelot et al. (2024)](https://doi.org/10.1111/2041-210X.14248)
+
 
 ## Take-home messages {background-color="#332c1c"}
+
+- Step selection functions extend habitat selection functions by including movement.
+- The original formulation of SSFs assumed a movement process rather than estimating it.
+- iSSFs estimate the movement process by assuming parametric distributions and still allow the use of conditional logistic regression for accessible model fitting.
+- Realizing that SSFs can be estimated using other general tools can improve a general understanding of the model of interest, not the fitting method.
 
 ## References {style="font-size: 60%;" .scrollable}
 
